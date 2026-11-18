@@ -20,10 +20,10 @@ body:not(.signed-in) :is(.intro,#roteiro,#hospedagens,#gastronomia,#orcamento,#c
 }
 
 </style></head>
-<body><div id="app"><header class="topbar"><a class="brand" href="#inicio"><span class="brandmark">✦</span><span>Serra do Cipó <em>A2 · 2026</em></span></a><nav class="nav" aria-label="Navegação"><a href="#inicio">Início</a><a href="#descobrir">Conhecer</a><a href="#roteiro">Roteiro</a><a href="#hospedagens">Hospedagens</a><a href="#gastronomia">Sabores</a><a href="#orcamento">Orçamento</a><a href="#checklist">Checklist</a><a href="#galeria">Galeria</a></nav><div class="top-actions"><button id="themeBtn" class="iconbtn" aria-label="Alternar tema">☾</button><div id="googleButton" class="google-signin"></div><button id="loginBtn" class="btn outline small">Entrar com Google</button></div></header>
+<body><div id="app"><header class="topbar"><a class="brand" href="#inicio"><span class="brandmark">✦</span><span>Serra do Cipó <em>A2 · 2026</em></span></a><nav class="nav" aria-label="Navegação"><a href="#inicio">Início</a><a href="#descobrir">Conhecer</a><a href="#roteiro">Roteiro</a><a href="#hospedagens">Hospedagens</a><a href="#gastronomia">Sabores</a><a href="#orcamento">Orçamento</a><a href="#checklist">Checklist</a><a href="#galeria">Galeria</a></nav><div class="top-actions"><button id="themeBtn" class="iconbtn" aria-label="Alternar tema">☾</button><button id="loginBtn" class="btn outline small">Abrir com código</button></div></header>
 <div id="toast" aria-live="polite"></div>
 <section id="inicio" class="hero"><div class="hero-backdrop"></div><div class="hero-content wrap"><span class="eyebrow">NOSSA PRÓXIMA AVENTURA • MINAS GERAIS</span><h1>Serra do Cipó<br><i>a dois.</i></h1><p>Entre cachoeiras, caminhos de pedra e o silêncio de um chalé na mata. Planejando juntos, aproveitando cada instante.</p><div id="forecastDays" class="forecast-days" aria-live="polite"></div><div class="hero-tags"><span>🌿 Natureza</span><span>🏡 Refúgio a dois</span><span>📍 Minas Gerais</span></div><div class="hero-buttons"><a href="#descobrir" class="btn primary">Explorar a Serra ↗</a></div><div class="hero-meta"><div><small>VIAGEM</small><strong id="heroDates">2026</strong></div><div><small>FALTAM</small><strong id="countdown">Calculando...</strong></div><div><small>PREVISÃO</small><strong id="weather">A consultar</strong></div></div></div></section>
-<div class="wrap"><div class="statusbar"><span id="connectionDot" class="dot"></span><span id="connectionText">Entre com Google para acessar a viagem.</span><div class="right"><span id="profileLabel"></span><button id="syncBtn" class="textbtn">⟳ Atualizar</button><button id="shareBtn" class="textbtn">↗ Compartilhar</button></div></div>
+<div class="wrap"><div class="statusbar"><span id="connectionDot" class="dot"></span><span id="connectionText">Use o código compartilhado para abrir o roteiro, o checklist e o orçamento.</span><div class="right"><span id="profileLabel"></span><button id="syncBtn" class="textbtn">⟳ Atualizar</button><button id="shareBtn" class="textbtn">↗ Compartilhar</button></div></div>
 <section class="intro" aria-label="Resumo"><div class="section-kicker">O NOSSO PAINEL</div><div class="section-row"><div><h2>Tudo importante, <em>num só lugar.</em></h2><p class="muted">Um refúgio planejado com carinho e liberdade para mudar os planos.</p></div><div class="trip-select"><label for="tripSelect">Viagem ativa</label><select id="tripSelect"></select><button id="newTripBtn" class="textbtn">+ Nova viagem</button><button id="duplicateBtn" class="textbtn">Duplicar viagem</button></div></div><div class="stats"><article class="stat"><small>ORÇAMENTO LIMITE</small><strong id="statLimit">—</strong><span>para os dois</span></article><article class="stat"><small>PREVISTO</small><strong id="statBudget">—</strong><span>combustível separado na tabela</span></article><article class="stat"><small>TAREFAS CONCLUÍDAS</small><strong id="statTasks">0%</strong><span id="statTasksSub">0 de 0 tarefas</span></article><article class="stat"><small>HOSPEDAGEM</small><strong id="statBooked">Em pesquisa</strong><span>compare e escolha juntos</span></article></div></section>
 <section id="descobrir" class="section"><div class="section-kicker">01 / DESCUBRA O DESTINO</div><div class="section-row"><div><h2>O que vale a pena <em>conhecer.</em></h2><p class="muted">Natureza monumental, trilhas e momentos para guardar na memória.</p></div></div><div id="attractionGrid" class="place-grid"></div><div class="note">⚠️ Novembro é período chuvoso. Não entre em rios ou cachoeiras durante chuva ou risco de cabeça-d’água. Horários e tarifas podem mudar no feriado.</div></section>
 <section id="roteiro" class="section"><div class="section-kicker">02 / ROTEIRO FLEXÍVEL</div><div class="section-row"><div><h2>Três dias, <em>sem pressa.</em></h2><p class="muted">Horários sugeridos, ajustáveis conforme clima e check-in.</p></div><button class="btn outline small edit-action" data-add="Roteiro">+ Adicionar passeio</button></div><div id="itinerary" class="days"></div></section>
@@ -34,27 +34,38 @@ body:not(.signed-in) :is(.intro,#roteiro,#hospedagens,#gastronomia,#orcamento,#c
 <section id="galeria" class="section"><div class="section-kicker">07 / NOSSAS MEMÓRIAS</div><div class="section-row"><div><h2>Os momentos que <em>ficam.</em></h2><p class="muted">Adicione links de fotos publicadas com permissão. Para fotos privadas, mantenha-as num álbum Google Photos com acesso controlado.</p></div><button id="addPhoto" class="btn outline small">+ Adicionar link de foto</button></div><div id="galleryGrid" class="place-grid"></div></section>
 <footer><div class="wrap footer-inner"><div><span class="brandmark">✦</span> <b>Serra do Cipó A2 · 2026</b><p>Feito para planejar juntos, viver sem pressa.</p></div><div><a href="#inicio">Voltar ao topo ↑</a><span> · </span><a href="https://www.gov.br/icmbio/pt-br" target="_blank" rel="noopener">ICMBio</a></div></div><p>Fotos: <a href="https://commons.wikimedia.org/wiki/File:Cachoeira_Grande_(Serra_do_Cip%C3%B3_-_MG).jpg">Rodrigo.Argenton</a> (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>) e <a href="https://commons.wikimedia.org/wiki/File:Juquinha.JPG">Anderson Moller</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>).</p></footer></div>
 <dialog id="editDialog"><form id="editForm"><div class="dialog-top"><h3 id="dialogTitle">Editar</h3><button type="button" id="closeDialog" class="iconbtn">✕</button></div><div id="formFields"></div><div class="dialog-actions"><button type="button" id="deleteItem" class="btn danger">Excluir</button><button type="button" id="cancelDialog" class="btn outline">Cancelar</button><button type="submit" class="btn primary">Salvar</button></div></form></dialog>
+<dialog id="accessDialog" aria-labelledby="accessTitle">
+  <form id="accessForm">
+    <h2 id="accessTitle">Abrir nossa viagem</h2>
+    <div class="field"><label for="accessProfile">Quem está usando?</label>
+      <select id="accessProfile"><option value="0">Yasmin</option><option value="1">Parceiro</option></select></div>
+    <div class="field"><label for="accessCode">Código compartilhado</label>
+      <input id="accessCode" type="password" autocomplete="off" minlength="24" maxlength="128" required></div>
+    <p class="muted">Este navegador vai lembrar seu acesso. Use “Encerrar acesso” em aparelhos compartilhados.</p>
+    <p id="accessError" role="status" aria-live="polite"></p>
+    <button id="cancelAccess" type="button" class="btn outline small">Cancelar</button>
+    <button id="submitAccess" type="submit" class="btn primary small">Abrir viagem</button>
+  </form>
+</dialog>
 <div id="bridgeContainer" aria-hidden="true"></div><script>
 // Copy this file to js/config.js and fill in PUBLIC identifiers (not secrets).
-// Restrict the Google OAuth web client to your exact GitHub Pages origin.
 window.NV_CONFIG = {
-  googleClientId: 'COLE_SEU_CLIENT_ID.apps.googleusercontent.com',
-  appsScriptUrl: 'https://script.google.com/macros/s/COLE_DEPLOYMENT_ID/exec',
+  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbyDmimoQrJgAjnHJNV-eTogavSOV76WMV7ZESDOG8EqZiWGTEWfr74ybzIIryh3jMTY/exec',
   appOrigin: 'https://yasmin-d.github.io',
   weatherLatitude: -19.34,
   weatherLongitude: -43.62
 };
 
-</script><script src="https://accounts.google.com/gsi/client" async defer></script><script>
-/* Secure Google Identity Services + Apps Script iframe RPC bridge.
- * No Apps Script CORS fetch is attempted. Only public configuration in GitHub.
- * ID tokens are in-memory and sent to the backend; never in URL/localStorage.
- */
+
+
+</script><script>
+/* Shared access code and Apps Script iframe RPC. */
 window.NVSheets = (() => {
-  let token=null,actor=null,iframe=null,bridge=null,sequence=0;
+  const storageKey = 'serra-cipo-a2-2026-access';
+  let access=null,actor=null,connecting=false,iframe=null,bridge=null,sequence=0;
   const pending=new Map(),listeners=[];
   const cfg=()=>window.NV_CONFIG||{};
-  const configured=()=>!!cfg().appsScriptUrl&&!cfg().appsScriptUrl.includes('COLE_')&&!!cfg().googleClientId&&!cfg().googleClientId.includes('COLE_');
+  const configured=()=>!!cfg().appsScriptUrl&&!cfg().appsScriptUrl.includes('COLE_');
   function notify(x){listeners.forEach(fn=>fn(x));}
   function ensureBridge(){
     if(iframe)return;
@@ -79,34 +90,69 @@ window.NVSheets = (() => {
     }
   });
   async function rpc(op,payload={}){
-    if(!token)throw Error('Entre com Google antes de editar ou sincronizar.');
+    if(!access)throw Error('Informe o código de acesso antes de sincronizar.');
     ensureBridge();let attempts=0;while(!bridge&&attempts++<60)await new Promise(r=>setTimeout(r,200));
     if(!bridge)throw Error('Apps Script não carregou. Confira se o Web App aceita visitantes e se o navegador permite conteúdo incorporado.');
     const id='req-'+Date.now()+'-'+(++sequence)+'-'+Math.random().toString(36).slice(2);
     return new Promise((resolve,reject)=>{
       const timer=setTimeout(()=>{pending.delete(id);reject(Error('Tempo de sincronização excedido.'));},35000);
       pending.set(id,{resolve,reject,timer});
-      bridge.window.postMessage({kind:'NV_REQUEST',id,token,op,payload},bridge.origin);
+      bridge.window.postMessage({kind:'NV_REQUEST',id,...access,op,payload},bridge.origin);
     });
   }
-  function init(onLogin){
-    if(!configured())return;
-    ensureBridge();let count=0;
-    const t=setInterval(()=>{
-      if(window.google?.accounts?.id){clearInterval(t);
-        google.accounts.id.initialize({client_id:cfg().googleClientId,callback:async ({credential})=>{
-          token=credential;
-          try{const data=await rpc('bootstrap');actor=data.actor;notify({type:'login',actor});onLogin(data);}
-          catch(e){token=null;actor=null;notify({type:'error',error:e.message});}
-        },auto_select:false,cancel_on_tap_outside:true});
-        google.accounts.id.renderButton(document.getElementById('googleButton'),{theme:'outline',size:'medium',shape:'pill',text:'signin_with',width:185});
-      }else if(++count>70){clearInterval(t);notify({type:'error',error:'Não foi possível carregar o login Google.'});}
-    },200);
+  let onLogin;
+  function saveAccess(value) {
+    try {
+      if (value) localStorage.setItem(storageKey, JSON.stringify(value));
+      else localStorage.removeItem(storageKey);
+    } catch {
+      if (value) notify({type: 'error', error: 'Este navegador não permite lembrar o código.'});
+    }
   }
-  function signIn(){if(!configured())throw Error('Configure js/config.js e o Apps Script antes do login.');if(!window.google?.accounts?.id)throw Error('Login Google ainda está carregando.');google.accounts.id.prompt(notification=>{if(notification.isNotDisplayed?.()||notification.isSkippedMoment?.())notify({type:'error',error:'Se a janela não abrir, permita pop-ups do Google ou recarregue o site.'});});}
-  function signOut(){if(actor?.email&&window.google?.accounts?.id)google.accounts.id.disableAutoSelect();token=null;actor=null;for(const job of pending.values()){clearTimeout(job.timer);job.reject(Error('Sessão encerrada.'));}pending.clear();notify({type:'logout'});}
-  return {init,signIn,signOut,rpc,configured,get actor(){return actor},get online(){return !!token&&!!actor},on:fn=>listeners.push(fn)};
+  async function signIn(code, profile) {
+    if (actor || connecting) return;
+    if (!configured()) throw Error('A conexão ao Google Sheets ainda está em configuração.');
+    connecting = true;
+    access = {code: code.trim(), profile};
+    let data;
+    try {
+      data = await rpc('bootstrap');
+    } catch (error) {
+      access = null;
+      if (error.message.includes('Código de acesso inválido')) saveAccess(null);
+      throw error;
+    } finally {
+      connecting = false;
+    }
+    actor = data.actor;
+    saveAccess(access);
+    notify({type: 'login', actor});
+    onLogin(data);
+  }
+  function init(callback) {
+    onLogin = callback;
+    if (!configured()) return;
+    let saved;
+    try { saved = JSON.parse(localStorage.getItem(storageKey)); } catch { return; }
+    if (typeof saved?.code === 'string' && [0, 1].includes(saved.profile)) {
+      signIn(saved.code, saved.profile).catch(error => notify({type: 'error', error: error.message}));
+    }
+  }
+  function signOut() {
+    access = null;
+    actor = null;
+    saveAccess(null);
+    for (const job of pending.values()) {
+      clearTimeout(job.timer);
+      job.reject(Error('Sessão encerrada.'));
+    }
+    pending.clear();
+    notify({type: 'logout'});
+  }
+  return {init, signIn, signOut, rpc, configured, get actor(){return actor},
+    get online(){return !!actor}, on:fn=>listeners.push(fn)};
 })();
+
 
 
 </script><script>
@@ -141,6 +187,12 @@ window.NVChecklist=(()=>{
 'use strict';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function safeLink(value) {
+  try {
+    const url=new URL(value);
+    return url.protocol==='https:' ? url.href : '';
+  } catch { return ''; }
+}
 const map=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
 const cash=NVBudget.money;
 const STATIC={Viagens:[],Checklist:[],Roteiro:[],Hospedagens:[],Restaurantes:[],Despesas:[],Galeria:[]};
@@ -159,7 +211,7 @@ function tripRows(t){return (rows[t]||[]).filter(r=>r['ID da viagem']===activeTr
 function trip(){return rows.Viagens.find(v=>v.ID===activeTrip)||rows.Viagens[0]}
 function toast(msg){const e=$('#toast');e.textContent=msg;e.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>e.classList.remove('show'),3700)}
 function photo(url,name){return `<div class="place-photo">${url?`<img src="${escape(url)}" alt="${escape(name)}" loading="lazy" onerror="this.classList.add('fail')">`:''}<div class="fallback" role="img" aria-label="Foto não disponível">⛰<br>${escape(name)}<br><small style="font:12px sans-serif">Foto indisponível</small></div><span class="photo-label">${escape(name)}</span></div>`}
-function card(x,table){let url=x.source||x['URL reserva']||x['URL cardápio']||'', img=x.img||x['URL imagem']||'',name=x.title||x.Nome;
+function card(x,table){let url=safeLink(x.source||x['URL reserva']||x['URL cardápio']), img=safeLink(x.img||x['URL imagem']),name=x.title||x.Nome;
  return `<article class="place-card">${photo(img,x.photoTitle||name)}<div class="place-body"><div class="place-head"><h3>${escape(name)}</h3><span class="tag">${escape(x.tag||x.Status||'DICA')}</span></div><p class="place-desc">${escape(x.desc||x.Descrição||'')}</p><div class="place-info">${escape(x.price||x['Faixa de preço']|| (x.Total?cash(x.Total):'Valor não confirmado'))}<br>${escape(x.time||'')}</div><div class="place-actions">${x.place||x.Localização?`<a href="${map(x.place||x.Localização)}" target="_blank" rel="noopener">📍 Mapa ↗</a>`:''}${url?`<a href="${escape(url)}" target="_blank" rel="noopener">🔗 ${table==='Hospedagens'?'Ver anúncio':'Fonte / detalhes'} ↗</a>`:''}${table&&NVSheets.online?`<button data-edit="${table}" data-id="${escape(x.ID)}">✎ Editar</button>`:''}${table==='Hospedagens'?`<span>♥ ${escape(x.Status||'Pesquisando')}</span>`:''}</div></div></article>`;}
 function renderPlaces(){ $('#attractionGrid').innerHTML=ATTRACTIONS.map(x=>card(x)).join('');const lodgings=tripRows('Hospedagens');$('#lodgingGrid').innerHTML=lodgings.length?lodgings.map(x=>card(x,'Hospedagens')).join(''):'<div class="empty">Nenhuma hospedagem cadastrada.</div>';
  const foods=tripRows('Restaurantes');$('#foodGrid').innerHTML=[...foods.map(x=>card(x,'Restaurantes')),...FOODS.map(x=>card(x))].join('');}
@@ -170,7 +222,7 @@ function renderTrips(){const v=trip();$('#tripSelect').innerHTML=rows.Viagens.ma
 function renderDashboard(){const p=NVBudget.summaries(tripRows('Despesas'),NVSheets.actor?.email,NVSheets.actor?.members?.[0]),s=NVChecklist.stats(tripRows('Checklist'));$('#statBudget').textContent=cash(p.planned);$('#statTasks').textContent=s.percent+'%';$('#statTasksSub').textContent=s.done+' de '+s.all+' tarefas';$('#statBooked').textContent=tripRows('Hospedagens').some(h=>h.Status==='Reservada')?'Reservada':'Em pesquisa';}
 function renderGallery(){const photos=tripRows('Galeria');$('#galleryGrid').innerHTML=photos.length?photos.map(x=>card({title:x.Título,desc:x.Descrição,img:x['URL imagem'],source:x['URL imagem'],ID:x.ID},'Galeria')).join(''):'<div class="empty">Comecem uma galeria compartilhando um link de foto ou álbum com permissões controladas. Não publiquem fotos privadas num site público sem consentimento.</div>';}
 function render(){document.body.classList.toggle('signed-in',NVSheets.online);renderTrips();renderDashboard();renderPlaces();renderRoutes();NVBudgetView();NVChecklistView();renderGallery();$$('.edit-action').forEach(b=>b.disabled=!NVSheets.online);}
-function NVBudgetView(){const list=tripRows('Despesas'),s=NVBudget.summaries(list,NVSheets.actor?.email),limit=NVBudget.num(trip()?.['Orçamento limite']);const max=Math.max(1,...Object.values(s.categories));
+function NVBudgetView(){const list=tripRows('Despesas'),s=NVBudget.summaries(list,NVSheets.actor?.email,NVSheets.actor?.members?.[0]),limit=NVBudget.num(trip()?.['Orçamento limite']);const max=Math.max(1,...Object.values(s.categories));
  $('#budgetBars').innerHTML=Object.entries(s.categories).map(([name,v])=>`<div class="bar-row"><div class="bar-label"><span>${escape(name)}</span><b>${cash(v)}</b></div><div class="bar-track"><div class="bar-fill" style="width:${v/max*100}%"></div></div></div>`).join('');
  const lines=[['Subtotal sem combustível',s.plannedWithoutFuel],['Combustível do Kwid (separado)',s.fuelPlanned],['Total previsto',s.planned],['Total já realizado',s.actual],['Saldo do orçamento (previsto)',limit-s.planned]];
  $('#budgetSummary').innerHTML=lines.map((l,i)=>`<div class="summary-line ${i===2?'final':''}"><span>${l[0]}</span><b>${cash(l[1])}</b></div>`).join('')+`<p class="muted" style="font-size:12px;margin:15px 0 0">Acerto de contas (somente despesas realizadas): ${s.settlement>0?'seu parceiro deve a você '+cash(s.settlement):s.settlement<0?'você deve ao parceiro '+cash(-s.settlement):'nada a acertar ainda'}. Depende de preencher “Pago por” e “Divisão eu (%)”.</p>`;
@@ -187,14 +239,47 @@ const FORMS={
  Viagens:[['Nome','text'],['Destino','text'],['Início','date'],['Fim','date'],['Descrição','textarea'],['Orçamento limite','number']]
 };
 function field(k,type,options,old){if(k==='Pago por') options=['',...(NVSheets.actor?.members||[])];let value=old?.[k]??(k==='Status'?'Pendente':k==='Responsável'?'Ambos':k==='Divisão eu (%)'?50:'');const label=escape(k);let control=type==='select'?`<select name="${label}">${options.map(op=>`<option value="${escape(op)}" ${String(value)===String(op)?'selected':''}>${escape(op||'—')}</option>`).join('')}</select>`:type==='textarea'?`<textarea name="${label}">${escape(value)}</textarea>`:`<input name="${label}" type="${type}" ${type==='number'?'step="any"':''} value="${escape(value)}">`;return `<div class="field"><label>${label}</label>${control}</div>`;}
-function openEditor(table,id=null){if(!NVSheets.online){toast('Entre com Google para editar.');return;}const old=id?(table==='Viagens'?rows.Viagens:tripRows(table)).find(x=>x.ID===id):null;editing={table,old};$('#dialogTitle').textContent=(id?'Editar ':'Adicionar ')+table;$('#formFields').innerHTML=FORMS[table].map(x=>field(x[0],x[1],x[2],old)).join('');$('#deleteItem').style.display=id?'inline-flex':'none';$('#editDialog').showModal();}
+function openEditor(table,id=null){if(!NVSheets.online){toast('Abra a viagem com o código para editar.');return;}const old=id?(table==='Viagens'?rows.Viagens:tripRows(table)).find(x=>x.ID===id):null;editing={table,old};$('#dialogTitle').textContent=(id?'Editar ':'Adicionar ')+table;$('#formFields').innerHTML=FORMS[table].map(x=>field(x[0],x[1],x[2],old)).join('');$('#deleteItem').style.display=id?'inline-flex':'none';$('#editDialog').showModal();}
 async function action(op,payload){try{const result=await NVSheets.rpc(op,payload);if(op==='delete'){rows[payload.table]=rows[payload.table].filter(x=>x.ID!==payload.id);}else if(op==='create'||op==='update'){const list=rows[payload.table];let i=list.findIndex(x=>x.ID===result.row.ID);if(i<0)list.push(result.row);else list[i]=result.row;}else if(op==='duplicate'){await refresh();activeTrip=result.result.id;}render();toast('✓ Alteração sincronizada com o Google Sheets.');return result;}catch(e){toast('Não salvo: '+e.message);if(e.message.includes('CONFLITO'))await refresh();throw e;}}
 async function refresh(){if(!NVSheets.online)return;const data=await NVSheets.rpc('list',{tripId:null});rows=data.rows; if(!rows.Viagens.some(v=>v.ID===activeTrip))activeTrip=rows.Viagens[0]?.ID||'';render();$('#connectionDot').classList.add('online');$('#connectionText').textContent='Sincronizado · '+new Date().toLocaleTimeString('pt-BR');}
 async function weather(){try{const c=window.NV_CONFIG||{};const u=`https://api.open-meteo.com/v1/forecast?latitude=${encodeURIComponent(c.weatherLatitude||-19.34)}&longitude=${encodeURIComponent(c.weatherLongitude||-43.62)}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=America%2FSao_Paulo&forecast_days=7`;const data=await (await fetch(u)).json();if(typeof data.current?.temperature_2m==='number')$('#weather').textContent=Math.round(data.current.temperature_2m)+'°C agora';const days=data.daily?.time||[];const t=trip();if(!t)return;const range=days.map((d,i)=>({d,i})).filter(x=>x.d>=t.Início&&x.d<=t.Fim);$('#forecastDays').innerHTML=range.map(({d,i})=>`<span>☁ ${new Date(d+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})}: ${Math.round(data.daily.temperature_2m_min[i])}–${Math.round(data.daily.temperature_2m_max[i])}°C · chuva ${data.daily.precipitation_probability_max[i]}%</span>`).join('');}catch(e){$('#weather').textContent='Consultar previsão';}}
 function bind(){
  $('#themeBtn').onclick=()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=theme;localStorage.setItem('nv_theme',theme)};document.documentElement.dataset.theme=localStorage.getItem('nv_theme')||'light';
- $('#loginBtn').onclick=()=>{try{if(NVSheets.online){NVSheets.signOut();rows=structuredClone(STATIC);activeTrip='cipo-2026';render();}else NVSheets.signIn();}catch(error){toast(error.message);}};
- NVSheets.on(ev=>{if(ev.type==='login'){$('#loginBtn').textContent='Sair';$('#profileLabel').textContent=ev.actor.email;$('#connectionText').textContent='Conta autenticada';}if(ev.type==='logout'){$('#loginBtn').textContent='Entrar com Google';$('#profileLabel').textContent='';$('#connectionDot').classList.remove('online');$('#connectionText').textContent='Entre com Google para acessar a viagem.';}if(ev.type==='error')toast(ev.error)});
+ const accessDialog = $('#accessDialog');
+ const accessCode = $('#accessCode');
+ const accessError = $('#accessError');
+ const submitAccess = $('#submitAccess');
+ $('#loginBtn').onclick=()=>{
+   if (NVSheets.online) {
+     NVSheets.signOut();
+     if ($('#editDialog').open) $('#editDialog').close();
+     editing=null;
+     rows=structuredClone(STATIC);
+     activeTrip='cipo-2026';
+     $('#forecastDays').textContent='';
+     render();
+     return;
+   }
+   if (!NVSheets.configured()) return toast('A conexão ao Google Sheets ainda está em configuração.');
+   accessError.textContent='';
+   accessDialog.showModal();
+ };
+ $('#cancelAccess').onclick=()=>accessDialog.close();
+ accessDialog.addEventListener('close',()=>{accessCode.value='';});
+ $('#accessForm').onsubmit=async event=>{
+   event.preventDefault();
+   submitAccess.disabled=true;
+   accessError.textContent='Verificando código…';
+   try {
+     await NVSheets.signIn(accessCode.value, Number($('#accessProfile').value));
+     accessDialog.close();
+   } catch (error) {
+     accessError.textContent=error.message;
+   } finally {
+     submitAccess.disabled=false;
+   }
+ };
+ NVSheets.on(ev=>{if(ev.type==='login'){$('#loginBtn').textContent='Encerrar acesso';$('#profileLabel').textContent=ev.actor.email;$('#connectionText').textContent='Acesso liberado';}if(ev.type==='logout'){$('#loginBtn').textContent='Abrir com código';$('#profileLabel').textContent='';$('#connectionDot').classList.remove('online');$('#connectionText').textContent='Use o código compartilhado para abrir a viagem.';}if(ev.type==='error')toast(ev.error)});
  $('#syncBtn').onclick=()=>refresh().catch(e=>toast(e.message));$('#shareBtn').onclick=async()=>{try{if(navigator.share)await navigator.share({title:document.title,url:location.href});else {await navigator.clipboard.writeText(location.href);toast('Link copiado!')}}catch(e){}};
  $('#tripSelect').onchange=e=>{activeTrip=e.target.value;render()};$('#newTripBtn').onclick=()=>openEditor('Viagens');$('#duplicateBtn').onclick=async()=>{if(!NVSheets.online)return toast('Entre para duplicar.');const name=prompt('Nome da nova viagem:',trip().Nome+' (cópia)');if(name)await action('duplicate',{tripId:activeTrip,name});};
  document.addEventListener('click',e=>{const b=e.target.closest('[data-add],[data-edit]');if(b)openEditor(b.dataset.add||b.dataset.edit,b.dataset.id||null)});
@@ -210,6 +295,7 @@ function boot(data){rows=data.rows;activeTrip=rows.Viagens.some(x=>x.ID===active
 bind();render();weather();NVSheets.init(boot);if(!NVSheets.configured())toast('A conexão ao Google Sheets ainda está em configuração.');
 setInterval(()=>{if(NVSheets.online)refresh().catch(e=>toast('Falha ao atualizar: '+e.message));},45000);
 })();
+
 
 
 
