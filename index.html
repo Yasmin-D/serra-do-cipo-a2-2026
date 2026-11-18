@@ -77,7 +77,13 @@ window.NVSheets = (() => {
     if (!iframe || !event.data || !event.source ||
         !/^https:\/\/(?:[a-z0-9-]+\.)*googleusercontent\.com$/.test(event.origin)) return;
     if (event.data.kind === 'NV_READY') {
-      if (event.source !== iframe.contentWindow && event.source.parent !== iframe.contentWindow) return;
+      let ancestor = event.source;
+      while (ancestor && ancestor !== iframe.contentWindow && ancestor !== window) {
+        const parent = ancestor.parent;
+        if (parent === ancestor) break;
+        ancestor = parent;
+      }
+      if (ancestor !== iframe.contentWindow) return;
       bridge = {window: event.source, origin: event.origin};
       notify({type: 'bridge'});
       return;
@@ -152,6 +158,7 @@ window.NVSheets = (() => {
   return {init, signIn, signOut, rpc, configured, get actor(){return actor},
     get online(){return !!actor}, on:fn=>listeners.push(fn)};
 })();
+
 
 
 
